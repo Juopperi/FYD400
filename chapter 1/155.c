@@ -6,17 +6,20 @@ int main(){
 
     int ai = 0;
     int bi = 0;
-
+    
     int n = sizeof(a)/sizeof(a[0]);
     int answer[2*n];
     int answerSorted[2*n];
 
-    for(int i = 0; i < n; i++){
-        answer[i] = a[i];
-        answer[i+1] = b[i];
+    for(int i = 0; i < 2*n; i=i+2){
+        answer[i] = a[ai];
+        answer[i+1] = b[ai];
+        ai++;
     }
 
-    for(int i = 0; i < 2*n; i++){
+    ai=0;
+
+    for(int i = 0; i < (2*n); i++){
         if(a[ai]>b[bi]){
             answerSorted[i] = b[bi];
             bi++;
@@ -26,9 +29,15 @@ int main(){
         }
     }
 
+    if(bi>ai){
+        answerSorted[n*2-1] = a[n-1];
+    } else {
+        answerSorted[n*2-1] = b[n-1];
+    }
+
     for(int i=0; i<2*n; i++) {
-        printf("%d ", answer[i]);
-        printf("%d ", answerSorted[i]);
+        printf("%d \t", answer[i]);
+        printf("%d", answerSorted[i]);
         printf("\n");
     }
 }

@@ -6,7 +6,11 @@
     //c) char
 
 int main(){
-    printf("I C kan vi ögra en massa saker med escaoe-sekvener\n");
-    printf("vi har \x9 tabb\n");
+    //c)
+        char a = '0';
+        printf("%d\n",a);
+    //d)
+    printf("I C kan vi g\x94ra en massa saker med escape-sekvener\n");
+    printf("vi har \t tabb\n");
     printf("eller vi kan aktivera ett larm");
 }
