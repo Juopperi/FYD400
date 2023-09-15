@@ -21,16 +21,25 @@ void sortLength(char *list){
 
 
 int main(){
-    char *input[9];
+    char *ord[9];
+    char inputOrd;
+    int index = 0;
 
     for(int i = 0; i<10; i++){
-        scanf("%c",&input[i]);
+        while(1){
+            scanf("%c",&inputOrd);
+            if(inputOrd == '\n'){
+                break;
+            }
+            ord[index]=inputOrd;
+            index++;
+        }
     }
 
-    sortLength(*input[9]);
+    sortLength(*ord[9]);
 
     for(int i = 0; i<10; i++){
-        printf("%c\n",input[i]);
+        printf("%c\n",ord[i]);
     }
 
 }
