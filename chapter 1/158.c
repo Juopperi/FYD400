@@ -1,19 +1,30 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-void sortLength(char *list){
-    char *temp;
-    for(int i=0; i<sizeof(*list);i++){
-        for(int j=i; j<sizeof(*list);i++){
-            if(sizeof(*(list+i)) < sizeof(*(list+j))){
-                *temp = *(list+i);
-                *(list+i) = *(list+j);
-                *(list+j) = *temp;
-            } else if (sizeof(*(list+i)) == sizeof(*(list+j))){
-                /* code */
+void sortLength(char **list){
+    char* temp;
+    int x = 0;
+    for(int i=0; i<10 ;i++){
+        for(int j=(i+1); j<10 ;j++){            
+            if(strlen(list[i]) < strlen(list[j])){
+                temp = list[i];
+                list[i] = list[j];
+                list[j] = temp;
+            } else if (strlen(list[i]) > strlen(list[j])){
+                temp = list[j];
+                list[j] = list[i];
+                list[i] = temp;
             } else {
-                *temp = *(list+j);
-                *(list+j) = *(list+i);
-                *(list+i) = *temp;
+                while(1){
+                    if(list[i][x]>list[j][x]){
+                        temp = list[j];
+                        list[j] = list[i];
+                        list[i] = temp;
+                        break;
+                    }
+                    x++;
+                }
             }            
         } 
     }
@@ -21,25 +32,28 @@ void sortLength(char *list){
 
 
 int main(){
-    char *ord[9];
+    char **ord = malloc(10 * sizeof(char*));
     char inputOrd;
     int index = 0;
 
     for(int i = 0; i<10; i++){
+        ord[i] = malloc(sizeof(char)*14);
+        index = 0;
         while(1){
             scanf("%c",&inputOrd);
             if(inputOrd == '\n'){
                 break;
             }
-            ord[index]=inputOrd;
+            ord[i][index]=inputOrd;
             index++;
         }
+        ord[i][index] = '\0';
     }
 
-    sortLength(*ord[9]);
+    sortLength(ord);
 
-    for(int i = 0; i<10; i++){
-        printf("%c\n",ord[i]);
+    for(int i = 9; i>=0; i--){
+        printf("%s\n",ord[i]);
     }
 
 }
