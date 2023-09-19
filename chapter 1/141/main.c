@@ -1,5 +1,5 @@
-#include "convert.h"
 #include <stdio.h>
+#include "convert.h"
 
 int main(){
     int input, answer;
