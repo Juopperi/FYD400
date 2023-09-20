@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void printArray(double *array[2][2]){
+void printArray(double array[2][2]){
     for(int x = 0 ; x < 2 ; x++){
         for(int y = 0 ; y < 2 ; y++){
             printf("%.1f ",array[x][y]);
@@ -10,15 +10,15 @@ void printArray(double *array[2][2]){
     printf("\n");
 }
 
-void clearArray(double **array[2][2]){
+void clearArray(double array[2][2]){
     for(int x = 0 ; x < 2 ; x++){
         for(int y = 0 ; y < 2 ; y++){
-            (*array)[x][y] = 1;
+            array[x][y] = 0;
         }
     }
 }
 
-void printArrayFile(double *array[2][2],FILE *stream){
+void printArrayFile(double array[2][2],FILE *stream){
     for(int x = 0 ; x < 2 ; x++){
         for(int y = 0 ; y < 2 ; y++){
             fprintf(stream, "%.1f ",array[x][y]);
@@ -26,47 +26,41 @@ void printArrayFile(double *array[2][2],FILE *stream){
     }
 }
 
-void readArrayFile(double *array[2][2],FILE *stream){
-    //fscanf(stream, "%f %f \n %f %f",&array[0][0],&array[0][1],&array[1][0],&array[1][1]);
-    for(int x = 0 ; x < 2 ; x++){
-        for(int y = 0 ; y < 2 ; y++){
-            array[x][y] = 5;
-        }
-    }
+void readArrayFile(double array[2][2],FILE *stream){
+    fscanf(stream, "%lf %lf %lf %lf",&array[0][0],&array[0][1],&array[1][0],&array[1][1]);
 }
 
 int main(){
     FILE *fp,*fpr;
 
     const char *filenames[3] = {"matris1.bin","matris2.bin","matris3.bin"};
-    double* matrixnames[3];
+    double (*matrixnames[3])[2][2];
     double a1[2][2] = {{0.0, 1.0} , {-1.0, 0.0}};
     double a2[2][2] = {{0.0, 1.0} , {1.0, 0.0}};
     double a3[2][2] = {{0.0, -1.0} , {1.0, 0.0}};
 
-    matrixnames[0] = *a1;
-    matrixnames[1] = *a2;
-    matrixnames[2] = *a3;
+    matrixnames[0] = &a1;
+    matrixnames[1] = &a2;
+    matrixnames[2] = &a3;
     
     for(int i = 0; i < 3;i++){
         fp = fopen(filenames[i],"w");
         printArrayFile(matrixnames[i],fp);
-        fclose;
+        fclose(fp);
         printArray(matrixnames[i]);
     }
 
+    printf("\n");
     for(int i = 0; i < 3;i++){
-        clearArray(&(matrixnames[i]));
+        clearArray(matrixnames[i]);
+        printArray(matrixnames[i]);
     }
-    printf("%f",a1[1][1]);
 
+    printf("\n");
     for(int j = 0; j < 3;j++){
-        //fpr = fopen(filenames[j],"r");
-        //readArrayFile(matrixnames[j],fpr);
-        //fclose;
+        fpr = fopen(filenames[j],"r");
+        readArrayFile(matrixnames[j],fpr);
+        fclose(fpr);
         printArray(matrixnames[j]);
     }
-
-    printf("%f",a1[1][1]);
-
 }
