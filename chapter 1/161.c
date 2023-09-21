@@ -7,26 +7,31 @@ struct node {
     struct node *previous;
 };
 
-void add(int num, struct node *currentNode){
+void add(double num, struct node *currentNode){
     struct node *newNode = malloc(sizeof(struct node));
-    printf("%i",sizeof(struct node));
-    while((*currentNode).next != NULL){
-        currentNode = (*currentNode).next;
+    if (newNode == NULL) {
+        fprintf(stderr, "Memory allocation failed.\n");
+        exit(1);
+    }
+
+    while(currentNode->next != NULL){
+        currentNode = currentNode->next;
          
     }
 
-    (*newNode).data = num;
-    (*newNode).previous = currentNode;
-    (*newNode).next = NULL;
+    newNode->data = num;
+    newNode->previous = currentNode;
+    newNode->next = NULL;
 
-    (*currentNode).next = newNode;     
+    currentNode->next = newNode;     
 }
 
 void print(struct node *currentNode){
-    while((*currentNode).next != NULL){
-        printf("%.2f ",(*currentNode).data);
-        currentNode = (*currentNode).next;
+    while(currentNode->next != NULL){
+        printf("%.2f ",currentNode->data);
+        currentNode = currentNode->next;
     }
+    printf("%.2f ",currentNode->data);
 }
 
 void delete(int num, struct node *currentNode){
@@ -34,12 +39,12 @@ void delete(int num, struct node *currentNode){
     struct node *previous;
     while(index < num){
         previous = currentNode;
-        currentNode = (*currentNode).next;
+        currentNode = currentNode->next;
         index++;
     }
 
-    (*previous).next = (*currentNode).next;
-    ((*currentNode).next)->previous = previous;
+    previous->next = currentNode->next;
+    (currentNode->next)->previous = previous;
 
     free(currentNode);
 }
@@ -48,41 +53,46 @@ int main(){
     struct node *first = malloc(sizeof(struct node));
     first->next = NULL;
     first->previous = NULL;
+    first->data = 0.0;
     struct node *currentNode = first; 
-    add(5,currentNode);
-    print(currentNode); 
-    struct node *x;
-    int input = 0, num = 0;
-    while (1){
+    
+    int input = 0;
+    int index = 0;
+    double num = 0.0;
+
+    while (input<5){
         printf("V\x84lj en operation: \n 1) Skapa en ny nod \n 2) Add one node \n 3) Delete one node on desired place\n 4) Print all values\n 5) Exit program\n");
         scanf("%d", &input); 
      
         switch(input){
             case 1:
-                while((*currentNode).next != NULL){
-                    x = currentNode;
-                    currentNode = (*currentNode).next;
-                    free(x);   
+                while (currentNode->next != NULL) {
+                    struct node *temp = currentNode;
+                    currentNode = currentNode->next;
+                    free(temp);
                 }
-                struct node *first = malloc(sizeof(struct node));
                 first->next = NULL;
-                first->previous = NULL;
-                struct node *currentNode = first;
+                currentNode = first;
                 break;
             case 2: 
                 printf("Enter a value ");
-                scanf("%d", &num);
+                scanf("%lf", &num);
                 add(num,currentNode);
                 break;
             case 3:
-                printf("Enter which ");
-                scanf("%d", &num);
-                delete(num,currentNode);            
+                printf("Enter which (The first one i zero): ");
+                scanf("%d", &index);
+                delete(index,currentNode);            
                 break;
             case 4:
                 print(currentNode);
                 break;
         }
-        rewind(stdout);  
     } 
+    while (currentNode->next != NULL) { //Fixar minne innan programet stänger ner
+        struct node *temp = currentNode;
+        currentNode = currentNode->next;
+        free(temp);
+    }
+    free(first);
 }
