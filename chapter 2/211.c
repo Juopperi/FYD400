@@ -1,34 +1,9 @@
 #include <stdio.h>
 
-void printArray(double (*array)[2][2]){
-    for(int x = 0 ; x < 2 ; x++){
-        for(int y = 0 ; y < 2 ; y++){
-            printf("%.1f ",array[x][y]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
-
-void clearArray(double (*array)[2][2]){
-    for(int x = 0 ; x < 2 ; x++){
-        for(int y = 0 ; y < 2 ; y++){
-            (*array)[x][y] = 0;
-        }
-    }
-}
-
-void printArrayFile(double (*array)[2][2],FILE *stream){
-    for(int x = 0 ; x < 2 ; x++){
-        for(int y = 0 ; y < 2 ; y++){
-            fprintf(stream, "%.1f ",(*array)[x][y]);
-        }
-    }
-}
-
-void readArrayFile(double (*array)[2][2],FILE *stream){
-    fscanf(stream, "%lf %lf %lf %lf",&(*array)[0][0],&(*array)[0][1],&(*array)[1][0],&(*array)[1][1]);
-}
+void printArray(double (*array)[2][2]);
+void clearArray(double (*array)[2][2]);
+void printArrayFile(double (*array)[2][2], FILE *stream);
+void readArrayFile(double (*array)[2][2], FILE *stream);
 
 int main(){
     FILE *fp,*fpr;
@@ -63,4 +38,34 @@ int main(){
         fclose(fpr);
         printArray(matrixnames[j]);
     }
+}
+
+void printArray(double (*array)[2][2]){
+    for(int x = 0 ; x < 2 ; x++){
+        for(int y = 0 ; y < 2 ; y++){
+            printf("%.1f ",array[x][y]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+void clearArray(double (*array)[2][2]){
+    for(int x = 0 ; x < 2 ; x++){
+        for(int y = 0 ; y < 2 ; y++){
+            (*array)[x][y] = 0;
+        }
+    }
+}
+
+void printArrayFile(double (*array)[2][2],FILE *stream){
+    for(int x = 0 ; x < 2 ; x++){
+        for(int y = 0 ; y < 2 ; y++){
+            fprintf(stream, "%.1f ",(*array)[x][y]);
+        }
+    }
+}
+
+void readArrayFile(double (*array)[2][2],FILE *stream){
+    fscanf(stream, "%lf %lf %lf %lf",&(*array)[0][0],&(*array)[0][1],&(*array)[1][0],&(*array)[1][1]);
 }
