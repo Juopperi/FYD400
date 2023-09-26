@@ -1,0 +1,8 @@
+Statisk länkning innebär att kompilerarn skapar en executablefile där bibloteksfilerna är inlagada. 
+Detta görs av en linker
+
+Filstorlek: Filstorleken bli större eftersom även bibloteksfilerna ligger med i .exe filen.
+
+Prestanda: Kan göra programet snabbare men ingen garanti. 
+
+Kompabilitet/Portabilitet: Användaren behöver inte ha några externa biblotek nedladdade. 
