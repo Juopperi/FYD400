@@ -43,7 +43,7 @@ int main(){
 void printArray(double (*array)[2][2]){
     for(int x = 0 ; x < 2 ; x++){
         for(int y = 0 ; y < 2 ; y++){
-            printf("%.1f ",array[x][y]);
+            printf("%.1f ",(*array)[x][y]);
         }
         printf("\n");
     }
@@ -61,11 +61,11 @@ void clearArray(double (*array)[2][2]){
 void printArrayFile(double (*array)[2][2],FILE *stream){
     for(int x = 0 ; x < 2 ; x++){
         for(int y = 0 ; y < 2 ; y++){
-            fprintf(stream, "%.1f ",(*array)[x][y]);
+            fprintf(stream, "%.1f\n",(*array)[x][y]);
         }
     }
 }
 
 void readArrayFile(double (*array)[2][2],FILE *stream){
-    fscanf(stream, "%lf %lf %lf %lf",&(*array)[0][0],&(*array)[0][1],&(*array)[1][0],&(*array)[1][1]);
+    fscanf(stream, "%lf\n%lf\n%lf\n%lf",&(*array)[0][0],&(*array)[0][1],&(*array)[1][0],&(*array)[1][1]);
 }
