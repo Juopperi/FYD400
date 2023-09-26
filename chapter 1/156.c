@@ -39,7 +39,4 @@ int main(){
     free(inputString);
     free(str1);
     free(str2);
-
-
-
 }

@@ -9,7 +9,7 @@ int main(){
     printf("Hur m\x84nga ord vill du mata in? ");
     scanf("%d",&input);
 
-    char *ord = malloc(sizeof(char)*100);
+    char *ord = malloc(sizeof(char)*input*10);
 
     printf("Ge %d ord nu:\n",input);
     rewind(stdin);
