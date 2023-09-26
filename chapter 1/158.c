@@ -4,28 +4,14 @@
 
 void sortLength(char **list){
     char* temp;
-    int x = 0;
     for(int i=0; i<10 ;i++){
         for(int j=(i+1); j<10 ;j++){            
-            if(strlen(list[i]) < strlen(list[j])){
+            if (strlen(list[i]) < strlen(list[j]) || 
+               (strlen(list[i]) == strlen(list[j]) && strcmp(list[i], list[j]) < 0)) {
                 temp = list[i];
                 list[i] = list[j];
                 list[j] = temp;
-            } else if (strlen(list[i]) > strlen(list[j])){
-                temp = list[j];
-                list[j] = list[i];
-                list[i] = temp;
-            } else {
-                while(1){
-                    if(list[i][x]>list[j][x]){
-                        temp = list[j];
-                        list[j] = list[i];
-                        list[i] = temp;
-                        break;
-                    }
-                    x++;
-                }
-            }            
+            }        
         } 
     }
 }
@@ -55,5 +41,7 @@ int main(){
     for(int i = 9; i>=0; i--){
         printf("%s\n",ord[i]);
     }
+    
+    free(ord);
 
 }

@@ -6,7 +6,7 @@ int main(){
     int input = 0,index =0;
     char inputOrd;
   
-    printf("Hur m\x84nga ord vill du mata in) ");
+    printf("Hur m\x84nga ord vill du mata in? ");
     scanf("%d",&input);
 
     char *ord = malloc(sizeof(char)*100);

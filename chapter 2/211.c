@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void printArray(double array[2][2]){
+void printArray(double (*array)[2][2]){
     for(int x = 0 ; x < 2 ; x++){
         for(int y = 0 ; y < 2 ; y++){
             printf("%.1f ",array[x][y]);
@@ -10,24 +10,24 @@ void printArray(double array[2][2]){
     printf("\n");
 }
 
-void clearArray(double array[2][2]){
+void clearArray(double (*array)[2][2]){
     for(int x = 0 ; x < 2 ; x++){
         for(int y = 0 ; y < 2 ; y++){
-            array[x][y] = 0;
+            (*array)[x][y] = 0;
         }
     }
 }
 
-void printArrayFile(double array[2][2],FILE *stream){
+void printArrayFile(double (*array)[2][2],FILE *stream){
     for(int x = 0 ; x < 2 ; x++){
         for(int y = 0 ; y < 2 ; y++){
-            fprintf(stream, "%.1f ",array[x][y]);
+            fprintf(stream, "%.1f ",(*array)[x][y]);
         }
     }
 }
 
-void readArrayFile(double array[2][2],FILE *stream){
-    fscanf(stream, "%lf %lf %lf %lf",&array[0][0],&array[0][1],&array[1][0],&array[1][1]);
+void readArrayFile(double (*array)[2][2],FILE *stream){
+    fscanf(stream, "%lf %lf %lf %lf",&(*array)[0][0],&(*array)[0][1],&(*array)[1][0],&(*array)[1][1]);
 }
 
 int main(){
