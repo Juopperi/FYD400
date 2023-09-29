@@ -1,8 +1,9 @@
 #include <stdio.h>
 
 int main(){
-    int x = 4;
-    int y = 9;
-    x = x<<y;
-    printf("%d",x);
+    unsigned int x = 0;
+    int y = 0;
+    scanf("%d",&x);
+    scanf("%d",&y);
+    printf("%d",x<<y);
 }
