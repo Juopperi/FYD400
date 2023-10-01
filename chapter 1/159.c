@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(){
     char input;
-    char* inputString[10][10] = malloc(sizeof(char)*20);
+    char inputString[10][10] = malloc(sizeof(char)*20);
     int index = 0, indexOrd = 0;
     printf("Skriv in max tio ord, speparare med ,\n");
 
