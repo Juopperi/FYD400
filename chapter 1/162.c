@@ -37,15 +37,22 @@ node* check(node *currentNode){
     }
 }
 
-void print(node *currentNode){
-    while(currentNode->parent != NULL){
-        currentNode = currentNode->parent;
+void print(node *currentNode, int layer){
+    if(currentNode == NULL) return;
+    printf(" %d ->",currentNode->data);
+    if(currentNode->left == NULL){
+        printf("\n");
     }
+    layer++;
+    print(currentNode->left,layer);
+    if(layer == 2){
+        printf("     ");
+        printf("     ");
+    } else if (layer==1){
+        printf("     ");
+    }
+    print(currentNode->right,layer);
 
-    printf("%d",currentNode->data);
-    printf("\n");
-    printf("%d ",(currentNode->left)->data);
-    printf("%d ",(currentNode->right)->data);
 }
 
 int main(){
@@ -58,16 +65,10 @@ int main(){
     
     add(2,currentNode,true);
     add(3,currentNode,false);
-    printf("%d\n",currentNode->data);
-    currentNode = check(currentNode);
-    printf("%d\n",currentNode->data);
-    add(4,currentNode,true);
-    add(5,currentNode,false);
-    currentNode = check(currentNode);
-    printf("%d\n",currentNode->data);
-    add(6,currentNode,true);
-    printf("%d\n",currentNode->data);
-    print(currentNode);
+    add(4,currentNode->left,true);
+    add(5,currentNode->left,false);
+    add(6,currentNode->right,true);
+    print(currentNode,0);
 
     free(head);
 }
