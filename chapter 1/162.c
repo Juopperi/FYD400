@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct node {
     int data;
@@ -9,7 +10,7 @@ struct node {
 };
 typedef struct node node;
 
-void add(int num, node *currentNode){
+void add(int num, node *currentNode, bool left){
     node *newNode = malloc(sizeof(struct node));
     if (newNode == NULL) {
         fprintf(stderr, "Memory allocation failed.\n");
@@ -20,25 +21,31 @@ void add(int num, node *currentNode){
     newNode->parent = currentNode;
     newNode->left = NULL;
     newNode->right = NULL;
-
-    if(currentNode->left = NULL){
-        currentNode->left = newNode; 
-    } else if (currentNode->right = NULL){
+    if(left){
+        currentNode->left = newNode;
+    } else {
         currentNode->right = newNode;
+    } 
+}
+
+node* check(node *currentNode){
+    if(currentNode->left != NULL && currentNode->right != NULL){
+        check(currentNode->left);
+        printf("test\n");
+    } else {
+        return currentNode;
     }
 }
 
-void print(struct node *currentNode){
+void print(node *currentNode){
     while(currentNode->parent != NULL){
         currentNode = currentNode->parent;
     }
 
-    while(currentNode->left != NULL){
-        printf("%d",currentNode->data);
-        currentNode = currentNode->left;
-    }
-
-    printf("%d ",currentNode->data);
+    printf("%d",currentNode->data);
+    printf("\n");
+    printf("%d ",(currentNode->left)->data);
+    printf("%d ",(currentNode->right)->data);
 }
 
 int main(){
@@ -49,11 +56,17 @@ int main(){
     head->data = 1;
     node *currentNode = head; 
     
-    add(2,currentNode);
-    add(3,currentNode);
-    add(4,currentNode);
-    add(5,currentNode);
-    add(6,currentNode);
+    add(2,currentNode,true);
+    add(3,currentNode,false);
+    printf("%d\n",currentNode->data);
+    currentNode = check(currentNode);
+    printf("%d\n",currentNode->data);
+    add(4,currentNode,true);
+    add(5,currentNode,false);
+    currentNode = check(currentNode);
+    printf("%d\n",currentNode->data);
+    add(6,currentNode,true);
+    printf("%d\n",currentNode->data);
     print(currentNode);
 
     free(head);
