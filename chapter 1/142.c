@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int dubblera(int x){
+void dubblera(int x){
     x = x*2;
 }
 
