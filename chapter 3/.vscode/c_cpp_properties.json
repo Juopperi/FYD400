@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Your Project Name",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/msys64/mingw64/include/gtk-3.0",  // Adjust the path as needed
+                "C:/msys64/mingw64/include/glib-2.0", // Adjust the path as needed
+                "C:/msys64/mingw64/lib/glib-2.0/include" // Adjust the path as needed
+            ],
+            "defines": [],
+            "compilerPath": "C:/msys64/mingw64/bin/gcc.exe", // Adjust the path as needed
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}
