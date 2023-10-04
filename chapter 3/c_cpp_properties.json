@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Your Project Name",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/include/gtk-3.0",  // Adjust the path as needed
+                "/usr/include/glib-2.0", // Adjust the path as needed
+                "/usr/lib/glib-2.0/include" // Adjust the path as needed
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc", // Adjust the path as needed
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}
