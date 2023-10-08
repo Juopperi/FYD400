@@ -1,15 +1,21 @@
 {
     "configurations": [
         {
-            "name": "Your Project Name",
+            "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:/msys64/mingw64/include/gtk-3.0",  // Adjust the path as needed
-                "C:/msys64/mingw64/include/glib-2.0", // Adjust the path as needed
-                "C:/msys64/mingw64/lib/glib-2.0/include" // Adjust the path as needed
+                "C:/msys64/mingw64/include",  // Adjust the path to match your MSYS2 installation
+                "C:/msys64/mingw64/include/gtk-3.0",
+                "C:/msys64/mingw64/include/pango-1.0",
+                "C:/msys64/mingw64/include/glib-2.0",
+                "C:/msys64/mingw64/lib/glib-2.0/include",
+                "C:/msys64/mingw64/include/harfbuzz",
+                "C:/msys64/mingw64/include/cairo",
+                "C:/msys64/mingw64/include/gdk-pixbuf-2.0",
+                "C:/msys64/mingw64/include/atk-1.0"
             ],
             "defines": [],
-            "compilerPath": "C:/msys64/mingw64/bin/gcc.exe", // Adjust the path as needed
+            "compilerPath": "C:/msys64/mingw64/bin/gcc.exe",  // Adjust the path to your GCC installation
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-x64"

@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build GTK Application",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-o",
+                "my_gtk_app",
+                "main.c",
+                "`pkg-config --cflags --libs gtk+-3.0`",
+                "-L/C/msys64/mingw64/lib",
+                "-lgoobject-2.0",
+                "-lglib-2.0",
+                "lcairo",
+                "lgdk_pixbuf-2.0",
+                "latk-1.0"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
