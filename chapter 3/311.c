@@ -51,7 +51,7 @@ int CVICALLBACK panelCB_2 (int panel, int event, void *callbackDAta, int eventDa
 }
 
 int CVICALLBACK okCV(int panel, int control, int event, void*callbackData, int eventData1, int eventData2){
-    swtich(event){
+    switch(event){
         case EVENT_COMMIT:
             textbox = malloc (sizeof(char)*(textlength+1));
             GetCtrlVal(panelHandle, PANEL_TextBoxCtrl,textbox);

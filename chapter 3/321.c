@@ -71,12 +71,24 @@ int CVICALLBACK DownCB (int panel, int control, int event, void *callbackData, i
 }
 
 int CVICALLBACK RightCB (int panel, int control, int event, void *callbackData, int eventData1, int evetnData2){
-    y=10;
+    x=10;
     switch(event){
         case EVENT_COMMIT
-            GetCtrlVal(panelHandle,PANEL_TEXTMSG,ATTR_TOP,&y);
-            y+=10;
-            SetCtrlAttribute(panelHandle,PANEL_TEXTMSG,ATTR_TOP,y);
+            GetCtrlVal(panelHandle,PANEL_TEXTMSG,ATTR_TOP,&x);
+            x+=10;
+            SetCtrlAttribute(panelHandle,PANEL_TEXTMSG,ATTR_TOP,x);
+            break;
+    }
+    return 0;
+}
+
+int CVICALLBACK RightCB (int panel, int control, int event, void *callbackData, int eventData1, int evetnData2){
+    x=-10;
+    switch(event){
+        case EVENT_COMMIT
+            GetCtrlVal(panelHandle,PANEL_TEXTMSG,ATTR_TOP,&x);
+            x-=10;
+            SetCtrlAttribute(panelHandle,PANEL_TEXTMSG,ATTR_TOP,x);
             break;
     }
     return 0;

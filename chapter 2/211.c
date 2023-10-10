@@ -17,7 +17,7 @@ int main(){
     matrixnames[0] = &a1;
     matrixnames[1] = &a2;
     matrixnames[2] = &a3;
-    
+     
     for(int i = 0; i < 3;i++){
         fp = fopen(filenames[i],"w");
         printArrayFile(matrixnames[i],fp);
