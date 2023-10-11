@@ -4,5 +4,6 @@
         "convert.h": "c",
         "stdlib.h": "c",
         "ctype.h": "c"
-    }
+    },
+    "cmake.sourceDirectory": "C:/Users/Deltagare/Downloads/cmake-3.27.7/cmake-3.27.7"
 }

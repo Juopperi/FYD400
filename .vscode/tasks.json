@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "My Task",
-            "command": "C:/msys64/mingw64/bin/cpp.exe",
+            "command": "C:/msys64/mingw64/bin/gcc.exe",
             "type": "shell",
             "args": [
                 "-g",

@@ -3,10 +3,10 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**", // This includes all files in your project directory
-                "C:/Users/Deltagare/Documents/GitHub/FYD400/include" // Replace with the actual path to your GLFW header files
-            ]
-            // ...
+                "${workspaceFolder}/**",
+                "C:/Users/Deltagare/Documents/GitHub/FYD400/include/GLFW/"
+            ],
+            "configurationProvider": "ms-vscode.cmake-tools"
         }
     ],
     "version": 4
