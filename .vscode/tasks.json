@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "My Task",
+            "command": "C:/msys64/mingw64/bin/cpp.exe",
+            "type": "shell",
+            "args": [
+                "-g",
+                "-std=c++17",
+                "-I./include",
+                "-L./lib",
+                "src/\\*.c",
+                "src/glad.c",
+                "-lglfw3dll",
+                "-o",
+                "${FYD400}/myprogram.exe"
+            ],
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "presentation": {
+                "reveal": "always"
+            },
+            "group": "build"
+        }
+    ]
+}

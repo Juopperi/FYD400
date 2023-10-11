@@ -1,0 +1,13 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**", // This includes all files in your project directory
+                "C:/Users/Deltagare/Documents/GitHub/FYD400/include" // Replace with the actual path to your GLFW header files
+            ]
+            // ...
+        }
+    ],
+    "version": 4
+}
