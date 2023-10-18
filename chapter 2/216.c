@@ -1,44 +1,42 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAXLEN 2000
-
 char check(char a);
 
 int main(){
     FILE *fp,*fpw;
 
-    char intArray[20][31];
-    char line[MAXLEN];
+    char intArray[31][21];
     int x = 0,y = 0;
-    char ch;
+    char ch = ' ';
     const char filename[8] = "216.txt";
 
     fp = fopen(filename,"r");
-
-    do {
+    
+    while (ch != EOF){
         ch = fgetc(fp);         
         if(ch == ' '){
             x++;
         } else if (ch == '\n'){
+            intArray[x+1][y] = '\n';
             x = 0;
-            intArray[31][y] = '\0';
             y++;
         } else {
             intArray[x][y] = check(ch);
         }
-    } while (ch != EOF);
+    } 
     
     fclose(fp);
+    
     fpw = fopen("216Output.txt","w");
 
-    for(int y = 0; y<21 ; y++){
-        for(int x = 0; x<32 ; x++){
+    for(int y = 0; y<20 ; y++){
+        for(int x = 0; x<31 ; x++){
             printf("%c",intArray[x][y]);
-            fprintf(fpw,"%c",intArray[y][x]);
+            fprintf(fpw,"%c",intArray[x][y]);
         }
-        printf("\n");
-        fprintf(fpw,"\n");   
+        //printf("\n");
+        //fprintf(fpw,"\n");   
     }
     fclose(fpw);
 }
@@ -67,6 +65,7 @@ char check(char a){
             return '@';
         case '\n':
             return '\n';
+        default:
+            return ' ';
     }
-    return 'A';
 }
